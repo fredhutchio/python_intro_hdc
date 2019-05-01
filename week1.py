@@ -11,7 +11,7 @@
 
 # instructor introduction
 # overview of fredhutch.io
-# sign in 
+# sign in
 # learner introductions and motivation
 # overview course philosophy, how to stay engaged
 # course objectives: overview of basic functionality of python (syntax, data manipulation, visualization)
@@ -29,19 +29,11 @@
 # ask about previous experience with Python or other programming languages
 # overview course philosophy, how to stay engaged
 # motivation for Python: programming language, reproducibility, open source
-# many ways to interact with Python
-#   python in terminal
-#   ipython in terminal
-#   save script in text editor
-#   IDE like spyder
-#   notebook: web application that combines code, graphs, and text
-#   interactive mode in terminal, chevrons (>>>) is prompt, waiting for input
-#   scripting mode: save commands in file (ends in .py), execute entire file at once
 # about our tools
 #   Anaconda: distribution (way of obtaining) Python;
 #       includes extra packages like ipython, spyder
 #   conda: package manager that comes with Anaconda, installs/updates packages
-#   jupyter notebook: installed with Anaconda
+#   jupyter notebook: installed with Anaconda, notebook is web application that combines code, graphs, and text
 
 # setting up a project directory
 # create new directory called python_project
@@ -198,6 +190,17 @@ print(z)
 
 # make sure work is saved
 # review how to get back into notebook
+
+# many ways to interact with Python
+#   python in terminal
+#   ipython in terminal
+#   IDE like spyder
+#   save script in text editor: Atom
+#   Visual Studio Code (prefered by Sci Comp)
+#   notebook: web application that combines code, graphs, and text
+#   interactive mode in terminal, chevrons (>>>) is prompt, waiting for input
+#   scripting mode: save commands in file (ends in .py), execute entire file at once
+
 # review objectives
 # preview next week's objectives
 # remind to sign in
