@@ -47,6 +47,12 @@ clinical_df[(clinical_df.year_of_birth == 1930) | (clinical_df.year_of_birth == 
 ## Challenge: print to the screen all data from clinical_df for patients with
 # stage ia tumors who live more than 365 days
 
+# what if you wanted to extract observations matching a collection of categories?
+# create list of desired values
+cancer_list = ["LGG", "UCEC", "GBM", "LUSC", "BRCA"]
+# extract values
+clinical_df = clinical_df[clinical_df["disease"].isin(cancer_list)]
+
 #### Grouping ####
 
 # motivation: evaluting data available for a category (column)
@@ -57,11 +63,11 @@ pd.unique(clinical_df["race"])
 pd.unique(clinical_df.race) # same as above, specifying column differently
 
 # how can we summarize data by category?
-# group data by disease (object isn't interpretable by us)
+# group data by race (object isn't interpretable by us)
 grouped_data = clinical_df.groupby("race")
 # note: we can't specify race as an attribute here because of the syntax of the method groupby
 
-# summary stats for all columns by disease
+# summary stats for all columns by race
 grouped_data.describe()
 # for only one column
 grouped_data.race.describe()
@@ -157,35 +163,6 @@ smoke_complete = clinical_df.dropna(subset = ["cigarettes_per_day"])
 smoke_complete = smoke_complete[smoke_complete.age_at_diagnosis > 0]
 # save filtered data to file
 smoke_complete.to_csv("data/smoke_complete.csv", index=False)
-# this is the first of two datasets we'll use next week!
-
-## use masking to create second dataframe for next week
-
-# reference original data
-birth_reduced = clinical_df
-
-## Challenge: filter out missing data for year of birth and vital status
-birth_reduced = birth_reduced.dropna(subset = ["year_of_birth", "vital_status"])
-
-birth_reduced = birth_reduced[-pd.isnull(birth_reduced.year_of_birth)]
-birth_reduced = birth_reduced[-pd.isnull(birth_reduced.vital_status)]
-
-# check to see that it worked
-pd.unique(birth_reduced.vital_status)
-## Challenge: remove "not reported" from vital status
-birth_reduced = birth_reduced[birth_reduced.vital_status != "not reported"]
-pd.unique(birth_reduced.vital_status)
-
-# count number of samples for each cancer type
-birth_reduced.groupby("disease").count()
-
-# create list of desired values
-dis_list = ["LGG", "UCEC", "GBM", "LUSC", "BRCA"]
-# extract values
-birth_reduced = birth_reduced[birth_reduced["disease"].isin(dis_list)]
-
-# write data to csv
-birth_reduced.to_csv("data/birth_reduced.csv", index=False)
 
 #### Wrapping up ####
 
