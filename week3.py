@@ -15,8 +15,13 @@
 
 # make sure folks are working in project directory with data/
 
-# load pandas library
+# load libraries
 import pandas as pd
+import matplotlib.pyplot as plt
+
+# Make sure figures appear inline in some interfaces
+%matplotlib inline
+# can also use plt.show()
 
 # read in data
 clinical_df = pd.read_csv("data/clinical.csv") # import data as csv file
@@ -51,7 +56,7 @@ clinical_df[(clinical_df.year_of_birth == 1930) | (clinical_df.year_of_birth == 
 # create list of desired values
 cancer_list = ["LGG", "UCEC", "GBM", "LUSC", "BRCA"]
 # extract values
-clinical_df = clinical_df[clinical_df["disease"].isin(cancer_list)]
+reduced_clinical = clinical_df[clinical_df["disease"].isin(cancer_list)]
 
 #### Grouping ####
 
@@ -59,7 +64,6 @@ clinical_df = clinical_df[clinical_df["disease"].isin(cancer_list)]
 
 # what categories exist for race?
 # identify number of unique elements in a column
-pd.unique(clinical_df["race"])
 pd.unique(clinical_df.race) # same as above, specifying column differently
 
 # how can we summarize data by category?
@@ -94,10 +98,7 @@ print(race_counts) # see script-friendly output
 ## Challenge: Write code that will display:
 # the number of patients in this dataset who are listed as alive
 
-#### Visualizing data with matplotlib ####
-
-# Make sure figures appear inline in notebook
-%matplotlib inline
+#### Visualizing grouped data as bar charts ####
 
 # Create a quick bar chart of number of patients with race known
 race_counts.plot(kind="bar");
@@ -164,9 +165,32 @@ smoke_complete = smoke_complete[smoke_complete.age_at_diagnosis > 0]
 # save filtered data to file
 smoke_complete.to_csv("data/smoke_complete.csv", index=False)
 
+#### Visualizing scatterplots ####
+
+# define plot variables
+x = smoke_complete["cigarettes_per_day"]
+y = smoke_complete["age_at_diagnosis"]
+
+# plot two quantitative variables
+plt.scatter(x, y)
+
+# add transparency
+plt.scatter(x, y, alpha=0.2)
+
+# change colors to match cancer type
+# show different categories
+pd.unique(smoke_complete["disease"])
+# create coded list of disease types
+group = smoke_complete["disease"].astype("category").cat.codes
+# create plot
+plt.scatter(x, y, alpha=0.2, c=group, label=group)
+
+# add axis labels (need to execute all lines at once)
+plt.scatter(x, y, alpha=0.2, c=group, label=group)
+plt.xlabel("cigarettes per day")
+plt.ylabel("age at diagnosis (days)")
+
 #### Wrapping up ####
 
 # review objectives
 # preview next week's objectives
-# check install for next week: import plotnine as p9
-# demo use of Atom + Hydrogen to code in Python
