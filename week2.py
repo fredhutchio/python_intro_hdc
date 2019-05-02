@@ -187,4 +187,3 @@ true_copy_clinical_df.head() # actual copy of original, unaltered
 
 # review objectives
 # preview next week's objectives
-# demo of spyder IDE, if time allows
