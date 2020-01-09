@@ -1,5 +1,7 @@
 # Introduction to Python
 
+This repository is for a special session of the regular [Intro to Python](https://github.com/fredhutchio/python_intro) materials held for staff in HDC. Please see the main repository for updated information. 
+
 ## Description
 
 Description: This four-week course is designed to introduce attendees to Python programming and its broad applications. 
